@@ -14,7 +14,8 @@ BuildRequires:	perl
 BuildRequires:	perl-devel
 BuildRequires:	postgresql-server # test propouse only
 BuildRequires:	readline-devel
-BuildRequires:	texlive
+BuildRequires:	texinfo
+#BuildRequires:	texlive
 BuildRequires:	perl(ExtUtils::Constant)
 BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl(File::Copy)
@@ -36,7 +37,6 @@ BuildRequires:	pkgconfig(zlib)
 Suggests:	yelp
 
 %description
-# from REAMDE
 PSPP is a program for statistical analysis of sampled data. It is
 a free replacement for the proprietary program SPSS.
 

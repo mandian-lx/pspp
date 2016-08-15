@@ -15,7 +15,7 @@ BuildRequires:	perl-devel
 BuildRequires:	postgresql-server # test propouse only
 BuildRequires:	readline-devel
 BuildRequires:	texinfo
-#BuildRequires:	texlive
+BuildRequires:	texlive # FIXME: maybe texlive is too much
 BuildRequires:	perl(ExtUtils::Constant)
 BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl(File::Copy)

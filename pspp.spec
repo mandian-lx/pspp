@@ -122,7 +122,8 @@ find %{buildroot}%{_libdir} -name \*.la -delete
 %find_lang %{name}
 
 %check
-%make check || true
+# tests may be very slow
+# make check || true
 
 # desktop file
 desktop-file-validate %{buildroot}%{_datadir}/applications/pspp.desktop

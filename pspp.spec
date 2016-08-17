@@ -8,14 +8,14 @@ License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		https://www.gnu.org/software/pspp/
 Source0:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
-Source1:	httsp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
+Source1:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 
 BuildRequires:	perl
 BuildRequires:	perl-devel
 BuildRequires:	postgresql-server # test propouse only
 BuildRequires:	readline-devel
 BuildRequires:	texinfo
-BuildRequires:	texlive # FIXME: maybe texlive is too much
+BuildRequires:	texlive # FIXME: texlive may be too much
 BuildRequires:	perl(ExtUtils::Constant)
 BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl(File::Copy)
@@ -42,11 +42,11 @@ a free replacement for the proprietary program SPSS.
 
 PSPP supports T-tests, ANOVA and GLM analyses, factor analysis,
 non-parametric tests, linear and logistic regression, clustering,
-and other statistical features.	PSPP produces statistical reports in
+and other statistical features. PSPP produces statistical reports in
 plain text, PDF, PostScript, CSV, HTML, SVG, and OpenDocument formats.
 It can import data from OpenDocument, Gnumeric, text and SPSS formats.
 
-PSPP has both text-based and graphical user interfaces.	The PSPP
+PSPP has both text-based and graphical user interfaces. The PSPP
 user interface has been translated into a number of languages.
 
 %files -f %{name}.lang
@@ -68,6 +68,10 @@ user interface has been translated into a number of languages.
 %{_mandir}/man1/%{name}-convert.1*
 %{_mandir}/man1/%{name}-dump-sav.1*
 %doc README
+%doc %dir doc/pspp.html
+%doc doc/%{name}.dvi
+%doc doc/%{name}.pdf
+%doc doc/%{name}.ps
 %doc NEWS
 %doc ONEWS
 %doc ChangeLog
@@ -88,6 +92,10 @@ Development files for developping applications that require PSPP.
 %files devel
 %{_libdir}/%{name}/lib%{name}.so
 %{_libdir}/%{name}/lib%{name}-core.so
+%doc %dir doc/pspp-dev.html
+%doc doc/%{name}-dev.dvi
+%doc doc/%{name}-dev.pdf
+%doc doc/%{name}-dev.ps
 %doc ChangeLog
 %doc TODO
 %doc AUTHORS
@@ -108,22 +116,18 @@ do
 done
 
 %build
-autoreconf -ifv
+autoreconf -fiv
 %configure
 %make all doc
 
 %install
 %make_install
 
-# don't lala
-find %{buildroot}%{_libdir} -name \*.la -delete
-
 # localization
 %find_lang %{name}
 
 %check
-# tests may be very slow
-# make check || true
+%make check || true
 
 # desktop file
 desktop-file-validate %{buildroot}%{_datadir}/applications/pspp.desktop

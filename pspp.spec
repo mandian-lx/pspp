@@ -127,7 +127,7 @@ autoreconf -fiv
 %find_lang %{name}
 
 %check
-%make check || true
+%make check-local || true
 
 # desktop file
 desktop-file-validate %{buildroot}%{_datadir}/applications/pspp.desktop

@@ -118,7 +118,7 @@ done
 
 %build
 autoreconf -fiv
-%configure
+%configure --disable-static
 %make all doc
 
 %install

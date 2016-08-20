@@ -10,6 +10,7 @@ URL:		https://www.gnu.org/software/pspp/
 Source0:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 
+BuildRequires:	gettext-devel
 BuildRequires:	perl
 BuildRequires:	perl-devel
 BuildRequires:	postgresql-server # test propouse only
